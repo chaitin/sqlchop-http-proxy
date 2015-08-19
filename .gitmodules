@@ -1,0 +1,4 @@
+[submodule "sqlchop"]
+	path = lib/sqlchop
+	url = git://github.com/chaitin/sqlchop.git
+	branch = master

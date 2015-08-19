@@ -1,0 +1,23 @@
+{
+  "name": "sqlchop-http-proxy",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chaitin/sqlchop-http-proxy.git"
+  },
+  "description": "A sample reverse proxy of SQLChop",
+  "author": "Chaitin Inc. <info@chaitin.com>",
+  "maintainers": [
+    "Chao Liu <chao.liu@chaitin.com>",
+    "Wenlei Zhu <wenlei.zhu@chaitin.com>"
+  ],
+  "main": "server.js",
+  "dependencies": {
+    "http-proxy": "git://github.com/chaitin/node-http-proxy.git#intercept",
+    "protocol-buffers": "3.x.x"
+  },
+  "scripts": {
+    "preinstall": "git submodule update"
+  },
+  "license": "MIT"
+}
