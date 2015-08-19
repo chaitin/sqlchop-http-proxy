@@ -17,7 +17,7 @@
     "protocol-buffers": "3.x.x"
   },
   "scripts": {
-    "preinstall": "git submodule update --init && node-gyp rebuild"
+    "preinstall": "wget -qO- https://github.com/chaitin/sqlchop/archive/master.zip | bsdtar -xvf- -C ./lib; mv ./lib/sqlchop-master ./lib/sqlchop; node-gyp rebuild;"
   },
   "license": "MIT"
 }
