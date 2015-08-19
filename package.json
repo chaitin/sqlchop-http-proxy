@@ -17,7 +17,7 @@
     "protocol-buffers": "3.x.x"
   },
   "scripts": {
-    "preinstall": "git submodule update"
+    "preinstall": "git submodule update --init && node-gyp rebuild"
   },
   "license": "MIT"
 }
