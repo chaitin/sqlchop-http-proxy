@@ -1,0 +1,16 @@
+[
+  {
+    "id": "001-limit",
+    "pattern" : "^\\s*[lL][iI][mM][iI][tT](\\s+|\\s*/\\*.*?\\*/\\s*)\\d+,\\s*\\d+((--)|;|#)?$",
+    "target" : "urlpath|cookie|user-agent",
+    "action" : "DENY",
+    "comment": "action can be ALLOW or DENY, target should be one of urlpath, cookie, user-agent, etc, multiple rtarget can be specified using | to separate them"
+  },
+  {
+    "id": "002-none",
+    "pattern" : ".*backdoor.*",
+    "target" : "urlpath",
+    "action" : "ALLOW",
+    "comment": "rules will be tested one by one, the first match will take effect"
+  }
+]

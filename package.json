@@ -9,12 +9,14 @@
   "author": "Chaitin Inc. <info@chaitin.com>",
   "maintainers": [
     "Chao Liu <chao.liu@chaitin.com>",
-    "Wenlei Zhu <wenlei.zhu@chaitin.com>"
+    "Wenlei Zhu <wenlei.zhu@chaitin.com>",
+    "Qian Luo <ragnarok01@chaitin.com>"
   ],
   "main": "server.js",
   "dependencies": {
-    "http-proxy": "git://github.com/chaitin/node-http-proxy.git#intercept",
-    "protocol-buffers": "3.x.x"
+    "http-proxy": "git://github.com/Eurce/node-http-proxy.git#intercept",
+    "protocol-buffers": "3.x.x",
+    "filewatcher": "3.x.x"
   },
   "scripts": {
     "preinstall": "wget -qO- https://github.com/chaitin/sqlchop/archive/master.zip | bsdtar -xvf- -C ./lib; mv ./lib/sqlchop-master ./lib/sqlchop; node-gyp rebuild;"

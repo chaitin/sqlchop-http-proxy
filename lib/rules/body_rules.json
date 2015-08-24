@@ -1,0 +1,9 @@
+[
+  {
+    "id": "003-limit",
+    "pattern" : "^\\s*[lL][iI][mM][iI][tT](\\s+|\\s*/\\*.*?\\*/\\s*)\\d+,\\s*\\d+((--)|;|#)?$",
+    "target" : "body",
+    "action" : "DENY",
+    "comment": "action can be ALLOW or DENY, rules will be tested one by one, the first match will take effect"
+  }
+]
