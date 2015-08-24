@@ -14,7 +14,7 @@
   ],
   "main": "server.js",
   "dependencies": {
-    "http-proxy": "git://github.com/Eurce/node-http-proxy.git#intercept",
+    "http-proxy": "git://github.com/chaitin/node-http-proxy.git#intercept",
     "protocol-buffers": "3.x.x",
     "filewatcher": "3.x.x"
   },
