@@ -4,18 +4,22 @@ var http = require('http');
 var numCPUs = require('os').cpus().length;
 var fs = require('fs');
 
-if (process.argv.length < 3) {
-  console.error('Usage: %s target-host', process.argv[1]);
-  process.exit(1);
-}
-var target = process.argv[2];
-
-http.globalAgent.maxSockets = 50;
-var listen_port = 9000;
-
 function logit() {
   return console.log.apply(console, ['[%s] ' + arguments[0], new Date().toISOString()].concat([].slice.call(arguments, 1)));
 }
+
+var dry_run = false;
+if (process.argv.length < 3) {
+  console.error('Usage: %s target-host', process.argv[1]);
+  process.exit(1);
+} else if (process.argv.length == 4 && process.argv[2] == '--dry-run') { // TODO: argv parsing
+  logit("enable dry run mode.");
+  dry_run = true;
+}
+var target = process.argv[process.argv.length - 1];
+
+http.globalAgent.maxSockets = 50;
+var listen_port = 9000;
 
 if (cluster.isMaster) {
   // Fork workers.
@@ -78,8 +82,11 @@ if (cluster.isMaster) {
       } else {
         logit('[ %s %s by %s ] [%s] %s %s - %s: %s', result.action, result.target, result.rule, req.socket.remoteAddress, req.method, req.url, result.target, req.headers[result.target] || '');
       }
-      res.writeHead(403, {'Content-Type': 'text/plain'});
-      res.end('Access Denied.\r\n');
+      if (!dry_run) {
+        res.writeHead(403, {'Content-Type': 'text/plain'});
+        res.end('Access Denied.\r\n');
+      }
+      return !dry_run;
     },
     handleALLOW: function(result, req, res) {
       logit('[ %s ] [%s] %s %s', result.action, req.socket.remoteAddress, req.method, req.url);
