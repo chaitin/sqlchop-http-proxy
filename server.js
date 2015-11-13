@@ -59,7 +59,7 @@ if (cluster.isMaster) {
       }
       return {action: "PASS", target: "header"}
     },
-    interceptBody: function(body) {
+    interceptBody: function(req, body) {
       var result = rules.testBody(body);
       if (result) return result;
       if (body && body.length > 1) {
